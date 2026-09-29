@@ -1,0 +1,24 @@
+{
+  "name": "acolhepet",
+  "version": "1.0.0",
+  "description": "Plataforma web desenvolvida para uma ONG de proteção animal.",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EkBelarmino/acolhepet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EkBelarmino/acolhepet/issues"
+  },
+  "homepage": "https://github.com/EkBelarmino/acolhepet#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
