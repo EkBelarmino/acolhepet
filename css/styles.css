@@ -1,0 +1,474 @@
+:root {
+    /* Cores */
+    --cor-primaria: #2A9D8F;
+    --cor-primaria-escura: #217A70;
+    --cor-secundaria: #F4A261;
+    --cor-destaque: #E76F51;
+
+    --cor-branca: #FFFFFF;
+    --cor-fundo: #F7F7F7;
+    --cor-cinza-claro: #E9ECEF;
+    --cor-texto: #333333;
+    --cor-texto-suave: #666666;
+
+    /* Tipografia */
+    --fonte-pequena: 0.875rem;
+    --fonte-normal: 1rem;
+    --fonte-media: 1.25rem;
+    --fonte-grande: 2rem;
+    --fonte-destaque: 2.5rem;
+
+    /* Espaçamentos */
+    --espaco-pequeno: 0.5rem;
+    --espaco-normal: 1rem;
+    --espaco-medio: 1.5rem;
+    --espaco-grande: 2rem;
+    --espaco-extra: 3rem;
+}
+
+/* Estrutura geral */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: Arial, sans-serif;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-normal);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--espaco-normal);
+}
+
+main section {
+    grid-column: 1 / -1;
+}
+
+
+/* Breakpoint 1 - celulares pequenos */
+
+@media (min-width: 320px) {
+    main {
+        padding: var(--espaco-pequeno);
+        gap: var(--espaco-pequeno);
+    }
+}
+
+
+/* Breakpoint 2 - celulares maiores */
+
+@media (min-width: 480px) {
+    main {
+        padding: var(--espaco-normal);
+        gap: var(--espaco-normal);
+    }
+}
+
+
+/* Breakpoint 3 - tablets */
+
+@media (min-width: 768px) {
+    main {
+        padding: var(--espaco-medio);
+        gap: var(--espaco-medio);
+    }
+}
+
+/* Breakpoint 4 - notebooks e desktops */
+
+@media (min-width: 1024px) {
+    main {
+        padding: var(--espaco-grande);
+    }
+
+    main section {
+        grid-column: span 6;
+    }
+}
+
+
+/* Breakpoint 5 - telas grandes */
+
+@media (min-width: 1440px) {
+    main {
+        max-width: 1320px;
+        padding: var(--espaco-extra);
+    }
+}/* Componentes com Flexbox */
+
+/* Cabeçalho e navegação */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espaco-normal);
+    padding: var(--espaco-normal) var(--espaco-grande);
+    flex-wrap: wrap;
+}
+
+nav {
+    display: flex;
+    gap: var(--espaco-normal);
+    flex-wrap: wrap;
+}
+
+/* Seções internas */
+section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-normal);
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+}
+
+/* Agrupamento dos campos */
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+}
+/* Navegação interativa */
+
+.navegacao {
+    position: relative;
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-normal);
+}
+
+.menu-links a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    padding: var(--espaco-pequeno);
+    transition: 0.3s ease;
+}
+
+.menu-links a:hover {
+    color: var(--cor-primaria);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    background-color: var(--cor-branca);
+    padding: var(--espaco-pequeno);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .submenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-hamburguer {
+    display: none;
+    cursor: pointer;
+    padding: var(--espaco-pequeno) var(--espaco-normal);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    border-radius: 6px;
+}
+
+/* Menu mobile */
+
+@media (max-width: 767px) {
+
+    .menu-hamburguer {
+        display: inline-block;
+    }
+
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background-color: var(--cor-branca);
+        padding: var(--espaco-normal);
+    }
+
+    .menu-toggle:checked ~ .menu-links {
+        display: flex;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        padding-left: var(--espaco-normal);
+    }
+
+    .dropdown:hover .submenu {
+        display: flex;
+    }
+}
+/* Botões */
+
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--cor-primaria-escura);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Formulários */
+
+input,
+select {
+    padding: 0.75rem;
+    border: 2px solid var(--cor-cinza-claro);
+    border-radius: 8px;
+    font-size: var(--fonte-normal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.15);
+    outline: none;
+}
+
+input:valid {
+    border-color: #2E8B57;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: #C94C4C;
+}
+.badge {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.alerta {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+    border-left: 5px solid #2E7D32;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.toast {
+    background-color: #333333;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 320px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-exemplo {
+    background-color: rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.modal-conteudo {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.feedback-section {
+    grid-column: 1 / -1;
+    align-items: center;
+    text-align: center;
+}
+
+.feedback-section .alerta {
+    max-width: 600px;
+}
+
+.feedback-section .toast {
+    width: 100%;
+    max-width: 320px;
+}
+
+.feedback-section .modal-exemplo {
+    width: 100%;
+    max-width: 600px;
+}
+
+.feedback-section .modal-conteudo {
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+}
+/* Ajustes finais de layout */
+
+body {
+    min-height: 100vh;
+}
+
+header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+}
+
+main {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 2rem;
+    row-gap: 2rem;
+}
+
+main section {
+    padding: 1.5rem;
+}
+
+/* Imagem da página inicial */
+main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Componentes de feedback ocupam a largura toda */
+.feedback-section {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+    max-width: 750px;
+    margin: 1rem auto;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+    background-color: var(--cor-branca);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-section h2 {
+    margin-top: 0;
+}
+
+/* Badge */
+.feedback-section .badge {
+    width: fit-content;
+}
+
+/* Alerta */
+.feedback-section .alerta {
+    width: 100%;
+    max-width: 550px;
+}
+
+/* Toast */
+.feedback-section .toast {
+    width: 100%;
+    max-width: 320px;
+}
+
+/* Área demonstrativa do modal */
+.feedback-section .modal-exemplo {
+    width: 100%;
+    max-width: 550px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    background-color: #eeeeee;
+}
+
+/* Caixa interna do modal */
+.feedback-section .modal-conteudo {
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branca);
+} 
+
+.lista-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.card-projeto {
+    background-color: var(--cor-branca);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.campo-erro {
+    border-color: #C94C4C !important;
+}
+
+.campo-sucesso {
+    border-color: #2E8B57 !important;
+}
+
+.mensagem-erro {
+    display: block;
+    color: #C94C4C;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
